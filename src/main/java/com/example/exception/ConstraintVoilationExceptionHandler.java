@@ -26,12 +26,11 @@ public class ConstraintVoilationExceptionHandler implements ExceptionMapper<Cons
     
     @Override
     public Response toResponse(ConstraintViolationException cve) {
-        String errorString = ((ConstraintViolationException) cve)
-                .getConstraintViolations()
-                .stream()
-                .peek(this::logError)
-                .map(ConstraintViolation::getMessage)
-                .collect(Collectors.joining(", "));
+        String errorString = cve.getConstraintViolations()
+                                .stream()
+                                .peek(this::logError)
+                                .map(ConstraintViolation::getMessage)
+                                .collect(Collectors.joining(", "));
         
         ErrorMessage errorMessage = new ErrorMessage();
         errorMessage.setErrorCode(Status.BAD_REQUEST.getStatusCode());

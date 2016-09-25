@@ -1,5 +1,7 @@
 package com.example.controller;
 
+import java.util.concurrent.CompletableFuture;
+
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -10,11 +12,14 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.container.AsyncResponse;
+import javax.ws.rs.container.Suspended;
 import javax.ws.rs.core.MediaType;
 
 import org.springframework.stereotype.Component;
 
 import com.example.configuration.ApplicationConfiguration;
+import com.example.filter.Authenticate;
 import com.example.model.GetRequest;
 import com.example.model.PostRequest;
 
@@ -54,5 +59,21 @@ public class TestController {
                         @Valid final PostRequest request) {
         return request;
     }
+    
+    @GET
+    @Path("hello/async")
+    @Authenticate
+    @Produces(MediaType.TEXT_PLAIN)
+    public void sayHello(@Suspended final AsyncResponse asyncResponse) {
+        CompletableFuture.runAsync(() -> {
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            asyncResponse.resume(sayHello());   
+        });
+    }
+    
     
 }

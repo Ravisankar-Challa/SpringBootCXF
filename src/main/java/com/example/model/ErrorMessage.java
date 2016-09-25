@@ -17,6 +17,4 @@ public class ErrorMessage {
     public void setErrorMessage(String errorMessage) {
         this.errorMessage = errorMessage;
     }
-    
-    
 }
