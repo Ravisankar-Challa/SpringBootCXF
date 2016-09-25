@@ -1,0 +1,19 @@
+server.compression:
+  enabled: true
+  mime-types: application/json,text/plain
+spring:
+  main.banner-mode: 'off'
+  profiles.active: local-sandbox
+---
+spring.profiles: local-sandbox
+config:
+  property1: 'Hello Hai'
+---
+spring.profiles: dev,staging,production
+property1: ${property1:'Hello Hai'}
+---
+spring.profiles: production
+endpoints.enabled: false
+endpoints.health.enabled: health
+management.health.defaults.enabled: false
+---
