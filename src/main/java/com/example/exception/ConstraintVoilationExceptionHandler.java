@@ -8,6 +8,7 @@ import javax.annotation.Priority;
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 import javax.ws.rs.Priorities;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.ext.ExceptionMapper;
@@ -38,6 +39,7 @@ public class ConstraintVoilationExceptionHandler implements ExceptionMapper<Cons
         
         return Response.status(Status.BAD_REQUEST)
                         .entity(errorMessage)
+                        .type(MediaType.APPLICATION_JSON_TYPE)
                         .build();
     }
     
