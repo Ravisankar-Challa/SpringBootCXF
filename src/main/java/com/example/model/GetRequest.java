@@ -20,7 +20,7 @@ public class GetRequest {
     
     @QueryParam("question")
     @NotNull(message = "Question Missing")
-    @Pattern(regexp = "[a-zA-z]*", message = "Question format is incorrect")
+    @Pattern(regexp = "[a-z A-z]*", message = "Question format is incorrect")
     private String question;
 
     public String getVersion() {

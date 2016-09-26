@@ -1,6 +1,5 @@
 package com.example.exception;
 
-import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
@@ -8,6 +7,7 @@ import javax.ws.rs.ext.Provider;
 import org.springframework.stereotype.Component;
 
 import com.example.model.ErrorMessage;
+import com.example.util.Constants;
 
 @Provider
 @Component
@@ -21,7 +21,7 @@ public class ApplicationExceptionHandler implements ExceptionMapper<ApplicationE
         
         return Response.status(exception.getErrorCode())
                         .entity(errorMessage)
-                        .type(MediaType.APPLICATION_JSON_TYPE)
+                        .type(Constants.APPLICATION_ERROR_JSON)
                         .build();
     }
     

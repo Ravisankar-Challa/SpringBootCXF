@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import java.util.StringJoiner;
 import java.util.concurrent.CompletableFuture;
 
 import javax.validation.Valid;
@@ -22,6 +23,7 @@ import com.example.configuration.ApplicationConfiguration;
 import com.example.filter.Authenticate;
 import com.example.model.GetRequest;
 import com.example.model.PostRequest;
+import com.example.util.Constants;
 
 @Path("/")
 @Component
@@ -35,16 +37,19 @@ public class TestController {
 
     @GET
     @Path("hello")
-    @Produces(MediaType.TEXT_PLAIN)
+    @Produces(MediaType.APPLICATION_JSON)
     public String sayHello() {
-        return "Hello World!!! " + config.getProperty1();
+        return "{\"hai\":\"Hello World!!! " + config.getProperty1() +"\"}";
     }
     
     @GET
     @Path("get/validate/{name}")
     @Produces(MediaType.TEXT_PLAIN)
     public String validateGetRequest(@Valid @BeanParam GetRequest request) {
-        return "Success " + request.getVersion() + request.getName() + request.getQuestion();
+        return new StringJoiner(" ")
+                .add(request.getVersion())
+                .add(request.getName())
+                .add(request.getQuestion()).toString();
     }
     
     @POST
@@ -75,5 +80,18 @@ public class TestController {
         });
     }
     
+    @GET
+    @Path("service")
+    @Produces(Constants.SERVICE_V1)
+    public String version1() {
+        return "{\"version\":1}";
+    }
+    
+    @GET
+    @Path("service")
+    @Produces(Constants.SERVICE_V2)
+    public String version2() {
+        return "{\"version\":2}";
+    }
     
 }
