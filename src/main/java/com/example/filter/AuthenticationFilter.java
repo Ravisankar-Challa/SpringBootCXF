@@ -2,6 +2,7 @@ package com.example.filter;
 
 import java.io.IOException;
 
+import javax.annotation.Priority;
 import javax.ws.rs.NotAuthorizedException;
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.container.ContainerRequestFilter;
@@ -16,6 +17,7 @@ import com.example.model.ErrorMessage;
 
 @Provider
 @Component
+@Priority(2)
 @Authenticate
 public class AuthenticationFilter implements ContainerRequestFilter {
 
