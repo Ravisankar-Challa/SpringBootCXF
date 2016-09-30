@@ -23,13 +23,15 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
 		<version.restassured>2.9.0</version.restassured>
-		<version.el-api>2.2.5</version.el-api>
+		<version.cxf>3.1.7</version.cxf>
+		<version.jaxrs-jackson-provider>2.8.3</version.jaxrs-jackson-provider>
 	</properties>
 
 	<dependencies>
 		<dependency>
-		    <groupId>org.springframework.boot</groupId>
-		    <artifactId>spring-boot-starter-jersey</artifactId>
+		    <groupId>org.apache.cxf</groupId>
+		    <artifactId>cxf-spring-boot-starter-jaxrs</artifactId>
+		    <version>${version.cxf}</version>
 		</dependency>
 <!-- 		<dependency>
 	        <groupId>net.rakugakibox.springbootext</groupId>
@@ -48,10 +50,10 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-actuator</artifactId>
 		</dependency>
-		<dependency>
-		   <groupId>javax.el</groupId>
-		   <artifactId>javax.el-api</artifactId>
-		   <version>${version.el-api}</version>
+				<dependency>
+		    <groupId>com.fasterxml.jackson.jaxrs</groupId>
+		    <artifactId>jackson-jaxrs-json-provider</artifactId>
+		    <version>${version.jaxrs-jackson-provider}</version>
 		</dependency>
 		
 		<!-- Test dependencies -->

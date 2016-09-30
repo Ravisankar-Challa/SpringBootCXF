@@ -7,6 +7,11 @@
 #      rename-on-rotate: true
 #    background-processor-delay: 3
 #    basedir: .
+cxf:
+  path: /api
+  jaxrs:
+    component-scan: true
+    classes-scan-packages: org.apache.cxf.jaxrs.validation,com.fasterxml.jackson.jaxrs.json
 server.compression:
   enabled: true
   mime-types: application/json,text/plain
