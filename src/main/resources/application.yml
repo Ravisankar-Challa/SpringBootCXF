@@ -1,9 +1,18 @@
+#server:
+#  tomcat:
+#    accesslog: 
+#      directory: logs
+#      enabled: true
+#      pattern: '%h %I %t "%r" %s %b %D "%{User-Agent}i" "%{user}i"'
+#      rename-on-rotate: true
+#    background-processor-delay: 3
+#    basedir: .
 server.compression:
   enabled: true
   mime-types: application/json,text/plain
 spring:
   main.banner-mode: 'off'
-  profiles.active: local-sandbox
+  profiles.active: dev
 ---
 spring.profiles: local-sandbox
 config:
