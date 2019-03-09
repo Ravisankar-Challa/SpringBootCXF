@@ -19,6 +19,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Provider
 @Priority(1)
+@PreMatching
 public class LoggingFilter implements ContainerRequestFilter, ContainerResponseFilter {
 
     @Override
