@@ -1,7 +1,7 @@
 package com.example;
 
-import static com.jayway.restassured.RestAssured.given;
-import static com.jayway.restassured.config.MatcherConfig.ErrorDescriptionType.HAMCREST;
+import static io.restassured.RestAssured.given;
+import static io.restassured.config.MatcherConfig.ErrorDescriptionType.HAMCREST;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.equalTo;
@@ -12,9 +12,9 @@ import javax.ws.rs.core.MediaType;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.boot.context.embedded.LocalServerPort;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
+import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import static com.example.util.Constants.APPLICATION_ERROR_JSON;
@@ -22,9 +22,9 @@ import static com.example.util.Constants.ERROR_CODE;
 import static com.example.util.Constants.ERROR_MESSAGE;
 
 import com.example.util.Constants;
-import com.jayway.restassured.RestAssured;
-import com.jayway.restassured.config.MatcherConfig;
-import com.jayway.restassured.response.Response;
+import io.restassured.RestAssured;
+import io.restassured.config.MatcherConfig;
+import io.restassured.response.Response;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
