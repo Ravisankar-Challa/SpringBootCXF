@@ -10,14 +10,16 @@
 cxf:
   path: /api
   jaxrs:
-    component-scan: true
-    classes-scan-packages: org.apache.cxf.jaxrs.validation,com.fasterxml.jackson.jaxrs.json
+    #classes-scan: true #should be accompanied by cxf.jaxrs.classes-scan-packages: com.exmple
+    component-scan: true 
+    classes-scan-packages: org.apache.cxf.jaxrs.validation,org.apache.johnzon.jaxrs.jsonb.jaxrs
 server.compression:
   enabled: true
   mime-types: application/json,text/plain
 spring:
   main.banner-mode: 'off'
   profiles.active: local-sandbox
+spring.http.converters.preferred-json-mapper: jsonb
 ---
 spring.profiles: local-sandbox
 config:
